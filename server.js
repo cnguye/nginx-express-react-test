@@ -15,6 +15,11 @@ app.use('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
+app.get("/api/express_backend", (req, res) => {
+    res.set("Content-Type", "text/html");
+    res.send({ express: "YOUR EXPRESS BACKEND IS CONNECTED TO REACT" });
+});
+
 // start express server on port 5000
 app.listen(port, () => {
   console.log('Running HTTP on ', port);

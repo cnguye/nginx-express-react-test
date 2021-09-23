@@ -1,9 +1,29 @@
 import "./App.css";
+import { useEffect, useState } from "react";
 import { Route, BrowserRouter as Router, Link } from "react-router-dom";
 
 import Home from "./components/Home";
 import About from "./components/About";
 function App() {
+    const { getData, setGetData } = useState("");
+    useEffect(() => {
+        callBackendAPI()
+            .then((res) => setGetData(res.express))
+            .catch((err) => console.log(err));
+    }, []);
+
+    const callBackendAPI = async () => {
+        const response = await fetch("http://localhost:5000/api/express_backend", {
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        const body = await response.json();
+        if(response.status !== 200){
+            throw Error(body.message);
+        }
+        return body;
+    }
     return (
         <div className="App">
             <Router>
@@ -21,6 +41,7 @@ function App() {
                 <div className="app-body">
                     <Route exact path="/" component={Home} />
                     <Route exact path="/About" component={About} />
+                    Get Data: {getData}
                 </div>
             </Router>
         </div>
