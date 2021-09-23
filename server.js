@@ -11,12 +11,12 @@ const port = process.env.PORT || 5000;
 const root = require('path').join(__dirname, 'build');
 app.use(express.static(root));
 
-app.use('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
+// app.use('/*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
 
 app.get("/api/express_backend", (req, res) => {
-    res.set("Content-Type", "text/html");
+    res.set("Content-Type", "application/json");
     res.send({ express: "YOUR EXPRESS BACKEND IS CONNECTED TO REACT" });
 });
 
