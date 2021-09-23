@@ -5,6 +5,7 @@ const app = express(); // create express app
 app.use(cors());
 
 app.use(express.json());
+const port = process.env.PORT || 5000;
 
 // add middlewares
 const root = require('path').join(__dirname, 'build');
@@ -15,6 +16,6 @@ app.use('/*', (req, res) => {
 });
 
 // start express server on port 5000
-app.listen(process.env.PORT || 5000, () => {
-  console.log('server started');
+app.listen(port, () => {
+  console.log('Running HTTP on ', port);
 });
