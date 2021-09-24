@@ -15,7 +15,7 @@ function App() {
 
     const callBackendAPI = async () => {
         const response = await fetch(
-            "http://localhost:5000/api/express_backend",
+            "http://107.152.46.30:5000/api/express_backend",
             {
                 headers: {
                     Accept: "application/json",
